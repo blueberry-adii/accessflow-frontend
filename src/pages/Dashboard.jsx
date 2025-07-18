@@ -153,7 +153,7 @@ export default function Dashboard() {
                 child={
                   <>
                     <div className="flex flex-col h-full py-4 justify-between max-[830px]:flex-row max-[830px]:w-full max-[830px]:items-stretch max-[830px]:h-fit max-[500px]:flex-col">
-                      <div className="text-xl font-semibold max-w-[130px] max-[500px]:text-lg">
+                      <div className="text-xl font-semibold min-w-[150px] max-[500px]:text-lg">
                         Current stats of AccessFlow
                       </div>
                       <BulletPointTexts />

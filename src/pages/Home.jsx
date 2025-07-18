@@ -52,10 +52,11 @@ export default function Home() {
         </div>
       </header>
       <section className="max-w-screen-2xl mx-auto flex flex-col items-center px-8 py-6">
-        <div className="p-8 flex flex-col items-start select-none">
-          <h1 className="text-7xl font-extrabold bg-gradient-to-r from-indigo-500 to-pink-500 text-transparent bg-clip-text flex gap-2">
+        <div className="p-8 flex flex-col items-start select-none max-[480px]:items-center">
+          <h1 className="text-7xl font-extrabold bg-gradient-to-r from-indigo-500 to-pink-500 text-transparent bg-clip-text flex gap-2 max-[640px]:text-6xl max-[480px]:text-5xl max-[380px]:text-4xl">
             AccessFlow{" "}
             <svg
+              className="max-[640px]:h-16 max-[480px]:h-10"
               height="80"
               fill="#e83f7a"
               viewBox="0 0 24 24"
@@ -72,29 +73,31 @@ export default function Home() {
               </g>
             </svg>
           </h1>
-          <h2 className="text-3xl">your go to for User Management!</h2>
+          <h2 className="text-3xl bg-slate-800/20 shadow-xl shadow-black/15 border-[1px] border-black/25 rounded-lg backdrop-blur-3xl max-[640px]:text-2xl max-[480px]:text-[16px]">
+            your go to for User Management!
+          </h2>
         </div>
-        <div className="flex items-center gap-16 py-4 select-none">
+        <div className="flex items-center gap-16 py-4 select-none max-[950px]:flex-col max-[950px]:gap-8">
           <div>
             <img
               src={AccessFlow}
               alt="AccessFlow"
-              className="h-[300px] shadow-xl shadow-black/15 rounded-2xl"
+              className="shadow-xl shadow-black/15 rounded-2xl"
               draggable={false}
             />
           </div>
-          <div className="w-[2px] h-[250px] rounded-xl bg-black/25">&nbsp;</div>
+          <div className="w-[2px] h-[250px] rounded-xl bg-black/25 max-[950px]:h-[2px] max-[950px]:w-full max-[950px]:mt-4">
+            &nbsp;
+          </div>
           <div>
-            <img
-              src={Login}
-              alt="AccessFlow"
-              className="h-[300px]"
-              draggable={false}
-            />
+            <img src={Login} alt="AccessFlow" className="" draggable={false} />
           </div>
         </div>
+
         <div className="flex flex-col items-center gap-2 py-4">
-          <div className="text-xl">Learn more about AccessFlow below!!</div>
+          <div className="text-xl text-center max-[480px]:text-[16px]">
+            Learn more about AccessFlow below!!
+          </div>
 
           <svg
             height="24"
@@ -120,14 +123,14 @@ export default function Home() {
         </div>
       </section>
       <section
-        className="max-w-screen-2xl mx-auto bg-gray-900 text-white flex flex-col items-center px-8"
+        className="max-w-screen-2xl mx-auto bg-gray-900 text-white flex flex-col items-center px-8 max-[950px]:p-2"
         ref={aboutRef}
       >
-        <div className="p-8 flex flex-col items-start max-w-[1200px] mt-12">
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-[#ff2273] to-[#ed22ff] text-transparent bg-clip-text flex gap-2 select-none before:content-[''] before:bg-blue-400/50 before:w-2 before:h-12">
+        <div className="p-8 flex flex-col items-start max-w-[1200px] mt-12 max-[480px]:p-4">
+          <h1 className="text-5xl font-bold bg-gradient-to-r from-[#ff2273] to-[#ed22ff] text-transparent bg-clip-text flex gap-2 select-none before:content-[''] before:bg-blue-400/50 before:w-2 before:h-12 max-[480px]:text-3xl">
             About AccessFlow
           </h1>
-          <p className="text-xl pt-8">
+          <p className="text-xl pt-8 max-[480px]:text-[16px]">
             <b>AccessFlow</b> is a full-stack authentication and user management
             project built using{" "}
             <b>MERN stack (MongoDB, Express.js, React and Node.js).</b> This
@@ -137,42 +140,73 @@ export default function Home() {
             management, and token based security.
           </p>
           <div className="w-[2px] bg-white/20 h-8 self-center"></div>
-          <p className="text-xl">
+          <p className="text-xl max-[480px]:text-[16px]">
             The UI is crafted with <b>React</b> and <b>Tailwind CSS</b> for a
             sleek, responsive design, while the backend ensures robust
             protection with <b>JWTs, refresh tokens,</b> and proper session
             handling.
           </p>
           <div className="w-[2px] bg-white/20 h-8 self-center"></div>
-          <p className="text-xl">
+          <p className="text-xl max-[480px]:text-[16px]">
             While <b>AccessFlow is not a real-world product,</b> it's a
             demonstration of how to implement{" "}
             <b>secure authentication systems -</b>
             from login, signup, protected routes to admin dashboards.
           </p>
-          <div className="text-4xl font-bold mt-12">Tech Stack</div>
-          <div className="flex flex-row items-center mt-6 gap-8 justify-between w-2/3">
-            <div className="text-2xl font-semibold">ReactJS</div>
-            <div className="bg-white text-white border-2 border-black/10 relative overflow-hidden rounded-full w-[500px] h-8 before:content-['80%'] before:pl-4 before:bg-gradient-to-r before:from-cyan-500 before:to-indigo-700 before:rounded-full before:absolute before:left-0 before:w-[80%] before:h-full"></div>
+          <div className="text-4xl font-bold mt-12 max-[480px]:text-xl">
+            Tech Stack
           </div>
-          <div className="flex flex-row items-center mt-6 justify-between w-2/3">
-            <div className="text-2xl font-semibold">TailwindCSS</div>
-            <div className="bg-white text-white border-2 border-black/10 relative overflow-hidden rounded-full w-[500px] h-8 before:content-['95%'] before:pl-4 before:bg-gradient-to-r before:from-rose-500 before:to-pink-700 before:rounded-full before:absolute before:left-0 before:w-[95%] before:h-full"></div>
+          <div className="flex flex-row items-center mt-6 gap-8 justify-between w-full">
+            <div className="text-2xl font-semibold max-[480px]:text-[16px]">
+              ReactJS
+            </div>
+            <div className="bg-white text-white border-2 border-black/10 relative overflow-hidden rounded-full w-1/2 h-8 before:content-['80%'] before:pl-4 before:bg-gradient-to-r before:from-cyan-500 before:to-indigo-700 before:rounded-full before:absolute before:left-0 before:w-[80%] before:h-full"></div>
           </div>
-          <div className="flex flex-row items-center mt-6 justify-between w-2/3">
-            <div className="text-2xl font-semibold">ExpressJS</div>
-            <div className="bg-white text-white border-2 border-black/10 relative overflow-hidden rounded-full w-[500px] h-8 before:content-['75%'] before:pl-4 before:bg-gradient-to-r before:from-yellow-500 before:to-amber-700 before:rounded-full before:absolute before:left-0 before:w-[75%] before:h-full"></div>
+          <div className="flex flex-row items-center mt-6 justify-between w-full">
+            <div className="text-2xl font-semibold max-[480px]:text-[16px]">
+              TailwindCSS
+            </div>
+            <div className="bg-white text-white border-2 border-black/10 relative overflow-hidden rounded-full w-1/2 h-8 before:content-['95%'] before:pl-4 before:bg-gradient-to-r before:from-rose-500 before:to-pink-700 before:rounded-full before:absolute before:left-0 before:w-[95%] before:h-full"></div>
           </div>
-          <div className="flex flex-row items-center mt-6 justify-between w-2/3">
-            <div className="text-2xl font-semibold">MongoDB</div>
-            <div className="bg-white text-white border-2 border-black/10 relative overflow-hidden rounded-full w-[500px] h-8 before:content-['95%'] before:pl-4 before:bg-gradient-to-r before:from-green-500 before:to-emerald-700 before:rounded-full before:absolute before:left-0 before:w-[95%] before:h-full"></div>
+          <div className="flex flex-row items-center mt-6 justify-between w-full">
+            <div className="text-2xl font-semibold max-[480px]:text-[16px]">
+              ExpressJS
+            </div>
+            <div className="bg-white text-white border-2 border-black/10 relative overflow-hidden rounded-full w-1/2 h-8 before:content-['75%'] before:pl-4 before:bg-gradient-to-r before:from-yellow-500 before:to-amber-700 before:rounded-full before:absolute before:left-0 before:w-[75%] before:h-full"></div>
+          </div>
+          <div className="flex flex-row items-center mt-6 justify-between w-full">
+            <div className="text-2xl font-semibold max-[480px]:text-[16px]">
+              MongoDB
+            </div>
+            <div className="bg-white text-white border-2 border-black/10 relative overflow-hidden rounded-full w-1/2 h-8 before:content-['95%'] before:pl-4 before:bg-gradient-to-r before:from-green-500 before:to-emerald-700 before:rounded-full before:absolute before:left-0 before:w-[95%] before:h-full"></div>
+          </div>
+          <div className="flex items-center gap-16 py-4 mt-8 select-none max-[950px]:flex-col max-[950px]:gap-8">
+            <div>
+              <img
+                src={AccessFlow}
+                alt="AccessFlow"
+                className="shadow-xl shadow-white/15 rounded-2xl"
+                draggable={false}
+              />
+            </div>
+            <div className="w-[2px] h-[250px] rounded-xl bg-white/25 max-[950px]:h-[2px] max-[950px]:w-full max-[950px]:mt-4">
+              &nbsp;
+            </div>
+            <div>
+              <img
+                src={AccessFlow}
+                alt="AccessFlow"
+                className="shadow-xl shadow-white/15 rounded-2xl"
+                draggable={false}
+              />
+            </div>
           </div>
         </div>
-        <div className="p-8 flex flex-col items-start max-w-[1200px] mt-8">
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-[#ff2273] to-[#ed22ff] text-transparent bg-clip-text flex gap-2 select-none before:content-[''] before:bg-blue-400/50 before:w-2 before:h-12">
+        <div className="p-8 flex flex-col items-start max-w-[1200px] mt-2 max-[480px]:p-4">
+          <h1 className="text-5xl font-bold bg-gradient-to-r from-[#ff2273] to-[#ed22ff] text-transparent bg-clip-text flex gap-2 select-none before:content-[''] before:bg-blue-400/50 before:w-2 before:h-12 max-[480px]:text-3xl">
             Why AccessFlow?
           </h1>
-          <p className="text-xl pt-8 pb-2">
+          <p className="text-xl pt-8 pb-2 max-[480px]:text-[16px]">
             In modern web applications, secure user access is{" "}
             <i>non-negotiable.</i> <b>AccessFlow</b> was built to explore how
             authentication works behind the scenes, going beyond Firebase or
@@ -180,7 +214,7 @@ export default function Home() {
             <b>custom JWT-based authentication, role segregation,</b> and{" "}
             <b>frontend-backend integration.</b>
           </p>
-          <ul className="text-xl py-4">
+          <ul className="text-xl py-4 max-[480px]:text-[16px]">
             <li className="before:content-['✅']">
               Learn to build an auth system from scratch
             </li>
@@ -200,25 +234,6 @@ export default function Home() {
               Admin-only and user-only route protection
             </li>
           </ul>
-        </div>
-        <div className="flex items-center gap-16 py-4 select-none">
-          <div>
-            <img
-              src={AccessFlow}
-              alt="AccessFlow"
-              className="h-[300px]"
-              draggable={false}
-            />
-          </div>
-          <div className="w-[2px] h-[250px] rounded-xl bg-white/25">&nbsp;</div>
-          <div>
-            <img
-              src={AccessFlow}
-              alt="AccessFlow"
-              className="h-[300px]"
-              draggable={false}
-            />
-          </div>
         </div>
         <div className="flex flex-col items-center gap-2 py-4">
           <svg
