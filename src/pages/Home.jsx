@@ -19,8 +19,8 @@ export default function Home() {
         className="flex top-0 flex-row h-20 w-full items-center justify-between px-6 backdrop-blur-3xl shadow-2xl shadow-black/20 z-100 max-[500px]:px-2"
         ref={topRef}
       >
-        <div className="flex flex-row items-center justify-center gap-16 max-[500px]:gap-6">
-          <div className="min-h-8 min-w-8">
+        <div className="flex flex-row items-center justify-center gap-16 max-[950px]:gap-4">
+          <div className="h-8 w-8 max-[500px]:h-7 max-[500px]:w-7">
             <svg
               fill="#000000"
               viewBox="0 0 24 24"
@@ -38,7 +38,7 @@ export default function Home() {
             </svg>
           </div>
           <div className="flex flex-col">
-            <h3 className="text-[26px] font-bold max-[650px]:text-[24px] max-[500px]:text-[22px] select-none">
+            <h3 className="text-[26px] font-bold max-[650px]:text-[24px] max-[500px]:text-[20px] select-none">
               AccessFlow ✨
             </h3>
           </div>
@@ -47,13 +47,13 @@ export default function Home() {
           <Button
             onClick={() => navigate("/login")}
             child="Join Now"
-            style="max-[750px]:hidden px-10 py-3"
+            style="px-10 py-3 max-[500px]:px-5 max-[500px]:py-1.5 max-[500px]:text-[14px]"
           />
         </div>
       </header>
       <section className="max-w-screen-2xl mx-auto flex flex-col items-center px-8 py-6">
-        <div className="p-8 flex flex-col items-start select-none max-[480px]:items-center">
-          <h1 className="text-7xl font-extrabold bg-gradient-to-r from-indigo-500 to-pink-500 text-transparent bg-clip-text flex gap-2 max-[640px]:text-6xl max-[480px]:text-5xl max-[380px]:text-4xl">
+        <div className="p-8 flex flex-col items-start select-none max-[480px]:items-center max-[480px]:px-2 max-[480px]:py-8">
+          <h1 className="text-7xl font-extrabold bg-gradient-to-r from-indigo-500 to-pink-500 text-transparent bg-clip-text flex gap-2 max-[640px]:text-6xl max-[480px]:text-5xl max-[380px]:text-[40px]">
             AccessFlow{" "}
             <svg
               className="max-[640px]:h-16 max-[480px]:h-10"
@@ -262,10 +262,14 @@ export default function Home() {
           ></Button>
         </div>
       </section>
-      <section className="max-w-screen-2xl mx-auto bg-gray-800 text-white flex flex-col px-16 py-4">
-        <div className="text-xl pt-4">© 2025 Made by Aditya Prasad</div>
-        <div className="text-white/50 pb-4">All rights reserved</div>
-        <div className="flex items-center">
+      <section className="max-w-screen-2xl mx-auto bg-gray-800 text-white flex flex-col px-16 py-4 max-[500px]:px-4">
+        <div className="text-lg pt-4 max-[500px]:text-[16px]">
+          © 2025 Made by Aditya Prasad
+        </div>
+        <div className="text-white/50 pb-4 max-[500px]:text-[12px] max-[500px]:pb-1">
+          All rights reserved
+        </div>
+        <div className="flex items-center max-[500px]:text-[12px]">
           <a
             className="text-rose-400"
             onClick={(e) => {
@@ -299,14 +303,14 @@ export default function Home() {
             Log In
           </a>
         </div>
-        <div className="mt-4 flex items-center gap-2">
+        <div className="mt-4 flex items-center gap-2 max-[500px]:gap-1 max-[500px]:mt-2">
           <a
             href="https://linkedin.com/in/aditya-prasad-095ab9329"
             className="hover:opacity-60 transition-opacity ease-in-out duration-200"
             target="_blank"
           >
             <svg
-              className=""
+              className="max-[500px]:h-7"
               height="40"
               viewBox="0 0 24 24"
               fill="none"
@@ -333,6 +337,7 @@ export default function Home() {
             target="_blank"
           >
             <svg
+              className="max-[500px]:h-6"
               height="36"
               xmlns="http://www.w3.org/2000/svg"
               aria-label="Gmail"
@@ -377,6 +382,7 @@ export default function Home() {
             target="_blank"
           >
             <svg
+              className="max-[500px]:h-5"
               height="30"
               viewBox="0 0 20 20"
               version="1.1"

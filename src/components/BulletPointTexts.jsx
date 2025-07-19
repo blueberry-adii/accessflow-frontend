@@ -24,7 +24,7 @@ export default function BulletPointTexts() {
           <div
             className={`w-8 h-2 relative overflow-hidden ${color1} rounded-full before:content-[''] before:w-full before:h-1/2 ${color2} before:absolute before:bottom-0 before:left-1/2 before:-translate-x-1/2 max-[500px]:h-1.5 max-[500px]:w-6`}
           ></div>
-          <div className="max-[500px]:text-[12px]">{text}</div>
+          <div className="max-[700px]:text-[12px]">{text}</div>
         </div>
       ))}
     </div>

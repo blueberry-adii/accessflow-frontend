@@ -11,9 +11,9 @@ export default function Dashboard() {
   return (
     <>
       <main className="flex  flex-col min-h-screen">
-        <header className="flex sticky top-0 flex-row h-20 w-full items-center justify-between px-6 backdrop-blur-3xl shadow-2xl shadow-black/20 z-100 max-[500px]:px-2">
-          <div className="flex flex-row items-center justify-center gap-16 max-[500px]:gap-6">
-            <div className="min-h-8 min-w-8">
+        <header className="flex sticky top-0 flex-row h-20 w-full items-center justify-between px-6 backdrop-blur-3xl shadow-2xl shadow-black/20 z-100 max-[500px]:px-3">
+          <div className="flex flex-row items-center justify-center gap-16 max-[500px]:gap-3">
+            <div className="min-h-8 min-w-8 max-[500px]:min-h-6 max-[500px]:min-w-6">
               <svg
                 fill="#000000"
                 viewBox="0 0 24 24"
@@ -31,10 +31,10 @@ export default function Dashboard() {
               </svg>
             </div>
             <div className="flex flex-col">
-              <h3 className="text-[26px] font-semibold max-[650px]:text-[24px] max-[500px]:text-[22px]">
+              <h3 className="text-[26px] font-semibold max-[650px]:text-[24px] max-[500px]:text-[20px]">
                 Hi, Aditya!
               </h3>
-              <p className="text-sm text-gray-800 font-[450] max-[650px]:text-[10px]">
+              <p className="text-sm text-gray-800 font-[450] max-[650px]:text-[8px]">
                 Let's take a look at your activity today
               </p>
             </div>
@@ -92,7 +92,7 @@ export default function Dashboard() {
             <Button
               child={
                 <svg
-                  className="h-6 w-6 max-[650px]:h-6 max-[650px]:w-6"
+                  className="h-6 w-6 max-[650px]:h-6 max-[650px]:w-6 max-[400px]:h-5 max-[400px]:w-5"
                   height="32px"
                   width="32px"
                   version="1.1"
@@ -129,12 +129,12 @@ export default function Dashboard() {
                   </g>
                 </svg>
               }
-              style="p-2 min-[750px]:hidden"
+              style="p-2 min-[750px]:hidden max-[400px]:p-1"
             />
           </div>
         </header>
         <div className="flex flex-row relative h-full">
-          <nav className="flex sticky max-h-[calc(100vh-80px)] top-20 flex-col items-center justify-between py-6 w-20 max-[500px]:w-16 max-[500px]:items-end">
+          <nav className="flex sticky max-h-[calc(100vh-80px)] top-20 flex-col items-center justify-between py-6 w-20 max-[500px]:w-14 max-[500px]:items-end">
             <div className="flex flex-col items-center gap-4">
               <MainIconsContainer
                 Icons={userAdminIconSVGS}
@@ -145,20 +145,20 @@ export default function Dashboard() {
             <SideIconsContainer Icons={logoutSVGS} />
           </nav>
           <div className="flex w-full justify-center">
-            <div className="grid grid-cols-5 grid-rows-4 gap-4 w-full max-w-[1280px] min-h-[800px] px-8 py-4 max-[940px]:grid-cols-3 max-[940px]:grid-rows-6 max-[830px]:max-h-[1400px] max-[650px]:grid-rows-7 max-[650px]:max-h-[1700px]">
+            <div className="grid grid-cols-5 grid-rows-4 gap-4 w-full max-w-[1280px] min-h-[800px] px-8 py-4 max-[830px]:grid-cols-3 max-[830px]:grid-rows-6 max-[830px]:max-h-[1400px] max-[650px]:grid-rows-7 max-[650px]:max-h-[1700px] max-[500px]:px-2">
               <GridCard
                 customStyle={
-                  "flex flex-row px-8 items-center justify-between bg-[#cfc7b5] col-span-3 row-span-2 max-[940px]:row-span-2 max-[830px]:flex-col"
+                  "flex flex-row px-8 items-center justify-between bg-[#cfc7b5] col-span-3 row-span-2 max-[830px]:row-span-2 max-[830px]:flex-col"
                 }
                 child={
                   <>
-                    <div className="flex flex-col h-full py-4 justify-between max-[830px]:flex-row max-[830px]:w-full max-[830px]:items-stretch max-[830px]:h-fit max-[500px]:flex-col">
-                      <div className="text-xl font-semibold min-w-[150px] max-[500px]:text-lg">
+                    <div className="flex flex-col h-full py-4 justify-between max-[830px]:flex-row max-[830px]:w-full max-[830px]:items-stretch max-[830px]:h-fit max-[595px]:flex-col">
+                      <div className="text-[24px] max-[700px]:text-xl font-semibold min-w-[150px] max-[500px]:text-lg">
                         Current stats of AccessFlow
                       </div>
                       <BulletPointTexts />
                     </div>
-                    <div className="h-full w-1/2 max-[830px]:w-full max-[830px]:h-fit">
+                    <div className="h-full w-1/2 max-[830px]:w-full max-[830px]:h-fit max-[950px]:w-full">
                       <div className="h-32 scale-125 w-32 relative rounded-full opacity-75 bg-amber-600 shadow-md shadow-black/50 top-1/2 -translate-y-3/4 max-[830px]:top-0 max-[830px]:-translate-y-full max-[830px]:bottom-full max-[830px]:left-1/2 max-[830px]:-translate-x-3/4 max-[500px]:h-24 max-[500px]:w-24 before:content-[''] before:h-32 before:w-32 before:absolute before:rounded-full before:opacity-75 before:bg-cyan-600 before:shadow-md before:shadow-black/50 before:left-1/2 before:max-[500px]:h-24 before:max-[500px]:w-24 after:content-[''] after:h-32 after:w-32 after:absolute after:rounded-full after:opacity-75 after:bg-rose-600 after:shadow-md after:shadow-black/50 after:left-1/4 after:top-1/2 after:max-[500px]:h-24 after:max-[500px]:w-24"></div>
                     </div>
                   </>
@@ -166,7 +166,7 @@ export default function Dashboard() {
               />
               <GridCard
                 customStyle={
-                  "flex items-center justify-center p-8 bg-[#22262b] col-span-2 row-span-2 max-[940px]:col-span-1 max-[940px]:row-span-1 max-[650px]:col-span-3"
+                  "flex items-center justify-center p-8 bg-[#22262b] col-span-2 row-span-2 max-[830px]:col-span-1 max-[830px]:row-span-1 max-[650px]:col-span-3"
                 }
                 child={
                   <>
@@ -183,7 +183,7 @@ export default function Dashboard() {
               />
               <GridCard
                 customStyle={
-                  "flex flex-col gap-2 p-6 bg-white col-span-3 row-span-2"
+                  "flex flex-col gap-2 p-6 bg-white col-span-3 row-span-2 max-[500px]:p-4"
                 }
                 child={
                   <>
@@ -194,7 +194,7 @@ export default function Dashboard() {
               />
               <GridCard
                 customStyle={
-                  "bg-white col-span-2 row-span-1 max-[940px]:col-span-3"
+                  "bg-white col-span-2 row-span-1 max-[830px]:col-span-3"
                 }
               />
             </div>
