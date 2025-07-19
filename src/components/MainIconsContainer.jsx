@@ -1,8 +1,11 @@
-import { useState } from "react";
 import Icon from "./MainIcon";
 
-export default function MainIconsContainer({ Icons, isIconChange }) {
-  const [activeButton, setActiveButton] = useState(1);
+export default function MainIconsContainer({
+  Icons,
+  isIconChange,
+  activeButton,
+  setActiveButton,
+}) {
   return (
     <div className="bg-white rounded-full flex flex-col gap-2">
       {Icons.map((icon) => (
