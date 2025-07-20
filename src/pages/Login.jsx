@@ -33,7 +33,7 @@ export default function Login() {
           ></Button>
         </div>
         <div
-          className={`w-1/2 h-full flex flex-col gap-24 items-center justify-center transition-transform ease-in-out duration-250 max-[580px]:w-full max-[580px]:h-1/2 max-[580px]:gap-12 ${
+          className={`w-1/2 h-full flex flex-col gap-24 items-center justify-center transition-transform ease-in-out duration-250 max-[580px]:w-full max-[580px]:h-1/2 max-[580px]:gap-4 ${
             state != "LogIn"
               ? "min-[580px]:rounded-r-4xl max-[580px]:rounded-b-4xl min-[580px]:translate-x-full max-[580px]:translate-y-full"
               : "min-[580px]:rounded-l-4xl max-[580px]:rounded-t-4xl"
@@ -48,7 +48,7 @@ export default function Login() {
           >
             <Input
               type={"text"}
-              placeholder={"Email"}
+              placeholder={"Username"}
               style={
                 "rounded-lg ml-4 w-72 max-[850px]:px-4 max-[850px]:py-2 max-[850px]:w-48"
               }
@@ -63,13 +63,21 @@ export default function Login() {
             {state == "LogIn" ? (
               ""
             ) : (
-              <Input
-                type={"password"}
-                placeholder={"Confirm Password"}
-                style={
-                  "rounded-lg ml-4 w-72 max-[850px]:px-4 max-[850px]:py-2 max-[850px]:w-48"
-                }
-              ></Input>
+              <>
+                <Input
+                  type={"password"}
+                  placeholder={"Confirm Password"}
+                  style={
+                    "rounded-lg ml-4 w-72 max-[850px]:px-4 max-[850px]:py-2 max-[850px]:w-48"
+                  }
+                ></Input>
+                <Input
+                  placeholder={"Name"}
+                  style={
+                    "rounded-lg ml-4 w-72 max-[850px]:px-4 max-[850px]:py-2 max-[850px]:w-48"
+                  }
+                ></Input>
+              </>
             )}
             <Button
               onClick={handleSubmit}
