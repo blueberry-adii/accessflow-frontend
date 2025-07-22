@@ -36,7 +36,14 @@ export default function DashboardHome() {
         }
       />
       <GridCard
-        customStyle={"bg-white col-span-2 row-span-1 max-[650px]:col-span-3"}
+        customStyle={
+          "flex justify-center items-center text-4xl font-bold bg-white col-span-2 row-span-1 max-[650px]:col-span-3"
+        }
+        child={
+          <>
+            <div className="">Card 1</div>
+          </>
+        }
       />
       <GridCard
         customStyle={
@@ -50,7 +57,14 @@ export default function DashboardHome() {
         }
       />
       <GridCard
-        customStyle={"bg-white col-span-2 row-span-1 max-[850px]:col-span-3"}
+        customStyle={
+          "flex justify-center items-center text-4xl font-bold bg-white col-span-2 row-span-1 max-[850px]:col-span-3"
+        }
+        child={
+          <>
+            <div className="">Card 2</div>
+          </>
+        }
       />
     </div>
   );

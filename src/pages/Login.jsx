@@ -46,6 +46,17 @@ export default function Login() {
             method="POST"
             className="flex flex-col w-1/2 items-center justify-center gap-4"
           >
+            {state == "LogIn" ? (
+              ""
+            ) : (
+              <Input
+                placeholder={"Name"}
+                style={
+                  "rounded-lg ml-4 w-72 max-[850px]:px-4 max-[850px]:py-2 max-[850px]:w-48"
+                }
+              ></Input>
+            )}
+
             <Input
               type={"text"}
               placeholder={"Username"}
@@ -63,21 +74,13 @@ export default function Login() {
             {state == "LogIn" ? (
               ""
             ) : (
-              <>
-                <Input
-                  type={"password"}
-                  placeholder={"Confirm Password"}
-                  style={
-                    "rounded-lg ml-4 w-72 max-[850px]:px-4 max-[850px]:py-2 max-[850px]:w-48"
-                  }
-                ></Input>
-                <Input
-                  placeholder={"Name"}
-                  style={
-                    "rounded-lg ml-4 w-72 max-[850px]:px-4 max-[850px]:py-2 max-[850px]:w-48"
-                  }
-                ></Input>
-              </>
+              <Input
+                type={"password"}
+                placeholder={"Confirm Password"}
+                style={
+                  "rounded-lg ml-4 w-72 max-[850px]:px-4 max-[850px]:py-2 max-[850px]:w-48"
+                }
+              ></Input>
             )}
             <Button
               onClick={handleSubmit}

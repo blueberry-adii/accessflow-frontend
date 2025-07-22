@@ -12,7 +12,7 @@ export default function Dashboard() {
   const [activeButton, setActiveButton] = useState(1);
   return (
     <main className="flex  flex-col min-h-screen">
-      <header className="flex sticky top-0 flex-row h-20 w-full items-center justify-between px-6 backdrop-blur-3xl shadow-2xl shadow-black/20 z-100 max-[500px]:px-3">
+      <header className="flex sticky top-0 flex-row h-20 w-full items-center justify-between px-6 backdrop-blur-3xl  z-100 max-[500px]:px-3">
         <div className="flex flex-row items-center justify-center gap-16 max-[500px]:gap-3">
           <div className="min-h-8 min-w-8 max-[500px]:min-h-6 max-[500px]:min-w-6">
             <svg
