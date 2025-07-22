@@ -252,6 +252,7 @@ const userAdminIconSVGS = [
 
 const settingIconSVGS = [
   {
+    onClick: () => {},
     icon: 4,
     svg: (
       <svg
@@ -291,6 +292,7 @@ const settingIconSVGS = [
     ),
   },
   {
+    onClick: () => {},
     icon: 5,
     svg: (
       <svg
@@ -339,6 +341,9 @@ const settingIconSVGS = [
 
 const logoutSVGS = [
   {
+    onClick: () => {
+      console.log("LogOut");
+    },
     icon: 6,
     svg: (
       <svg
@@ -388,6 +393,7 @@ const logoutSVGS = [
     ),
   },
   {
+    onClick: () => {},
     icon: 7,
     svg: (
       <div className="h-10 w-10 max-[650px]:h-8 max-[650px]:w-8 rounded-full bg-black/25"></div>

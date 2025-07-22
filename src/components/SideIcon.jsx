@@ -1,5 +1,4 @@
-export default function SideIcon({ icon, onClick, activeButton, iconSvg }) {
-  const isActive = activeButton == icon ? true : false;
+export default function SideIcon({ onClick, iconSvg }) {
   return (
     <button
       onClick={onClick}
