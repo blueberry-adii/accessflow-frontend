@@ -20,26 +20,26 @@ export default function Login() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    if (state == "LogIn") {
-      navigate("/dashboard");
-    } else {
-      try {
-        const res = await fetch("http://localhost:4000/v1/api/auth/signup", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
-        });
-        const data = await res.json();
-        console.log(data.message);
-        if (data.success) {
-          setFormData({});
-          navigate("/dashboard");
-        } else {
-          setError(data.message);
-        }
-      } catch (err) {
-        console.error("Error submitting form");
+    try {
+      const url =
+        state == "LogIn"
+          ? "http://localhost:4000/v1/api/auth/login"
+          : "http://localhost:4000/v1/api/auth/signup";
+      const res = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      console.log(data.message);
+      if (data.success) {
+        setFormData({});
+        navigate("/dashboard");
+      } else {
+        setError(data.message);
       }
+    } catch (err) {
+      console.error("Error submitting form");
     }
   }
   return (
