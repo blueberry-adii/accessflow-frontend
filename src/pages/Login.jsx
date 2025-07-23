@@ -5,13 +5,37 @@ import { Link, useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [state, setState] = useState("LogIn");
+  const [formData, setFormData] = useState({
+    username: "",
+    password: "",
+  });
   const navigate = useNavigate();
-  function handleSubmit(e) {
+
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  }
+
+  async function handleSubmit(e) {
     e.preventDefault();
     if (state == "LogIn") {
       navigate("/dashboard");
     } else {
-      navigate("/");
+      try {
+        const res = await fetch("http://localhost:4000/v1/api/auth/signup", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        });
+        const data = await res.json();
+        console.log(data.message);
+        if (data.success) {
+          setFormData({});
+          navigate("/dashboard");
+        }
+      } catch (err) {
+        console.error("Error submitting form");
+      }
     }
   }
   return (
@@ -25,9 +49,23 @@ export default function Login() {
           }`}
         >
           <Button
-            onClick={() =>
-              setState(`${state != "SignUp" ? "SignUp" : "LogIn"}`)
-            }
+            onClick={() => {
+              if (state == "SignUp") {
+                setFormData({
+                  username: "",
+                  password: "",
+                });
+                setState("LogIn");
+              } else {
+                setFormData({
+                  name: "",
+                  username: "",
+                  password: "",
+                  confirmPassword: "",
+                });
+                setState("SignUp");
+              }
+            }}
             child={`${state != "SignUp" ? "New here?" : "Already Registered?"}`}
             style={`px-10 py-3 rounded-xl border-1 border-black/10 bg-white text-black hover:text-white max-[850px]:px-4 max-[850px]:py-1.5`}
           ></Button>
@@ -43,47 +81,52 @@ export default function Login() {
             {state == "LogIn" ? "Log In" : "Sign Up"}
           </div>
           <form
-            method="POST"
+            onSubmit={handleSubmit}
             className="flex flex-col w-1/2 items-center justify-center gap-4"
           >
             {state == "LogIn" ? (
               ""
             ) : (
-              <Input
+              <input
+                type="text"
+                name="name"
+                onChange={handleChange}
+                value={formData.name}
                 placeholder={"Name"}
-                style={
-                  "rounded-lg ml-4 w-72 max-[850px]:px-4 max-[850px]:py-2 max-[850px]:w-48"
-                }
-              ></Input>
+                className="text-sm bg-white shadow-md shadow-black/10 px-6 py-3 outline-0 mr-5 max-[650px]:text-[10px] max-[500px]:mr-2 max-[400px]:py-2 max-[400px]:px-4 rounded-lg ml-4 w-72 max-[850px]:px-4 max-[850px]:py-2 max-[850px]:w-48"
+              />
             )}
 
-            <Input
-              type={"text"}
+            <input
+              type="text"
+              name="username"
+              onChange={handleChange}
+              value={formData.username}
               placeholder={"Username"}
-              style={
-                "rounded-lg ml-4 w-72 max-[850px]:px-4 max-[850px]:py-2 max-[850px]:w-48"
-              }
-            ></Input>
-            <Input
-              type={"password"}
+              className="text-sm bg-white shadow-md shadow-black/10 px-6 py-3 outline-0 mr-5 max-[650px]:text-[10px] max-[500px]:mr-2 max-[400px]:py-2 max-[400px]:px-4 rounded-lg ml-4 w-72 max-[850px]:px-4 max-[850px]:py-2 max-[850px]:w-48"
+            />
+            <input
+              type="password"
+              name="password"
+              onChange={handleChange}
+              value={formData.password}
               placeholder={"Password"}
-              style={
-                "rounded-lg ml-4 w-72 max-[850px]:px-4 max-[850px]:py-2 max-[850px]:w-48"
-              }
-            ></Input>
+              className="text-sm bg-white shadow-md shadow-black/10 px-6 py-3 outline-0 mr-5 max-[650px]:text-[10px] max-[500px]:mr-2 max-[400px]:py-2 max-[400px]:px-4 rounded-lg ml-4 w-72 max-[850px]:px-4 max-[850px]:py-2 max-[850px]:w-48"
+            />
             {state == "LogIn" ? (
               ""
             ) : (
-              <Input
-                type={"password"}
+              <input
+                type="password"
+                name="confirmPassword"
+                onChange={handleChange}
+                value={formData.confirmPassword}
                 placeholder={"Confirm Password"}
-                style={
-                  "rounded-lg ml-4 w-72 max-[850px]:px-4 max-[850px]:py-2 max-[850px]:w-48"
-                }
-              ></Input>
+                className="text-sm bg-white shadow-md shadow-black/10 px-6 py-3 outline-0 mr-5 max-[650px]:text-[10px] max-[500px]:mr-2 max-[400px]:py-2 max-[400px]:px-4 rounded-lg ml-4 w-72 max-[850px]:px-4 max-[850px]:py-2 max-[850px]:w-48"
+              />
             )}
             <Button
-              onClick={handleSubmit}
+              type="submit"
               child={`${state == "LogIn" ? "Log In" : "Sign Up"}`}
               style="px-10 py-3 bg rounded-lg max-w-34 max-[850px]:px-4 max-[850px]:py-1.5"
             />
