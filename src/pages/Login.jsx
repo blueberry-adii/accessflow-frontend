@@ -54,6 +54,7 @@ export default function Login() {
         >
           <Button
             onClick={() => {
+              setError("");
               if (state == "SignUp") {
                 setFormData({
                   username: "",
