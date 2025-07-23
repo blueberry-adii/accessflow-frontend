@@ -9,10 +9,12 @@ export default function Login() {
     username: "",
     password: "",
   });
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   function handleChange(e) {
     const { name, value } = e.target;
+    setError("");
     setFormData((prev) => ({ ...prev, [name]: value }));
   }
 
@@ -32,6 +34,8 @@ export default function Login() {
         if (data.success) {
           setFormData({});
           navigate("/dashboard");
+        } else {
+          setError(data.message);
         }
       } catch (err) {
         console.error("Error submitting form");
@@ -82,8 +86,11 @@ export default function Login() {
           </div>
           <form
             onSubmit={handleSubmit}
-            className="flex flex-col w-1/2 items-center justify-center gap-4"
+            className="flex flex-col relative w-full items-center justify-center gap-4 max-[580px]:mt-4"
           >
+            <div className="text-[12px] text-red-500 absolute -top-6">
+              {error}
+            </div>
             {state == "LogIn" ? (
               ""
             ) : (
