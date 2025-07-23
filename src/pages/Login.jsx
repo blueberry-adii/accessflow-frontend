@@ -27,6 +27,7 @@ export default function Login() {
           : "http://localhost:4000/v1/api/auth/signup";
       const res = await fetch(url, {
         method: "POST",
+        credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });

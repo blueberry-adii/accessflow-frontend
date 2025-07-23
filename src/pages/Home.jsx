@@ -45,7 +45,7 @@ export default function Home() {
         </div>
         <div className="flex flex-row items-center">
           <Button
-            onClick={() => navigate("/login")}
+            onClick={() => navigate("/dashboard")}
             child="Join Now"
             style="px-10 py-3 max-[500px]:px-5 max-[500px]:py-1.5 max-[500px]:text-[14px]"
           />
