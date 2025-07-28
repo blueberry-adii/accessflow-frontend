@@ -1,6 +1,8 @@
 import Button from "../components/Button";
+import { useUser } from "../UserContext";
 
 export default function AdminPage() {
+  const user = useUser();
   const list = [
     { name: "User 1", role: "User", dateOfJoin: "14 May 2025" },
     { name: "User 2", role: "Admin", dateOfJoin: "14 May 2025" },
@@ -48,7 +50,7 @@ export default function AdminPage() {
             <div className="flex gap-4 w-full items-center">
               <div className="min-h-8 min-w-8 bg-black/25 rounded-full max-[450px]:min-h-6 max-[450px]:min-w-6"></div>
               <span className="flex justify-between items-end w-full text-[16px] max-[450px]:text-[14px] max-[450px]:flex-col max-[450px]:items-start">
-                You
+                {user.name}
                 <span className="text-[10px] text-black/50">
                   joined on xx/xx/xx
                 </span>

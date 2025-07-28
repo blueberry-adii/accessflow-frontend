@@ -1,5 +1,6 @@
 const userAdminIconSVGS = [
   {
+    route: "home",
     icon: 1,
     inactiveSvg: (
       <svg
@@ -73,6 +74,7 @@ const userAdminIconSVGS = [
     ),
   },
   {
+    route: "info",
     icon: 2,
     inactiveSvg: (
       <svg
@@ -170,6 +172,7 @@ const userAdminIconSVGS = [
     ),
   },
   {
+    route: "admin",
     icon: 3,
     inactiveSvg: (
       <svg

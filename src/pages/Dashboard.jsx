@@ -1,56 +1,122 @@
+import { Outlet, useLocation } from "react-router-dom";
 import Button from "../components/Button";
 import Input from "../components/Input";
 import MainIconsContainer from "../components/MainIconsContainer";
-import DashboardHome from "./DashboardHome";
 import { logoutSVGS, settingIconSVGS, userAdminIconSVGS } from "../constants";
 import SideIconsContainer from "../components/SideIconsContainer";
-import DashboardInfo from "./DashboardInfo";
-import AdminPage from "./AdminPage";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { UserContext } from "../UserContext";
 
 export default function Dashboard() {
-  const [activeButton, setActiveButton] = useState(1);
-  return (
-    <main className="flex  flex-col min-h-screen">
-      <header className="flex sticky top-0 flex-row h-20 w-full items-center justify-between px-6 backdrop-blur-3xl  z-100 max-[500px]:px-3">
-        <div className="flex flex-row items-center justify-center gap-16 max-[500px]:gap-3">
-          <div className="min-h-8 min-w-8 max-[500px]:min-h-6 max-[500px]:min-w-6">
-            <svg
-              fill="#000000"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-              <g
-                id="SVGRepo_tracerCarrier"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              ></g>
-              <g id="SVGRepo_iconCarrier">
-                <path d="M1.858,12.99l5.267.752L4.219,17.375a1,1,0,0,0,1.055,1.587L11,17.326V21a1,1,0,0,0,2,0V17.326l5.726,1.636A1.023,1.023,0,0,0,19,19a1,1,0,0,0,.781-1.625l-2.906-3.633,5.267-.752a1,1,0,0,0,.565-1.7L21,9.586V6a1,1,0,0,0-1.555-.832L15.87,7.551l1.078-3.235A1,1,0,0,0,16,3H14.414L12.707,1.293a1,1,0,0,0-1.414,0L9.586,3H8a1,1,0,0,0-.948,1.316L8.13,7.551,4.555,5.168A1,1,0,0,0,3,6V9.586L1.293,11.293a1,1,0,0,0,.565,1.7Zm2.849-2.283A1,1,0,0,0,5,10V7.868l4.445,2.964a1,1,0,0,0,1.5-1.148L9.388,5H10a1,1,0,0,0,.707-.293L12,3.414l1.293,1.293A1,1,0,0,0,14,5h.612l-1.56,4.684a1,1,0,0,0,1.5,1.148L19,7.868V10a1,1,0,0,0,.293.707l.586.586-5.021.717a1,1,0,0,0-.639,1.615l2.043,2.553-3.988-1.14a1.007,1.007,0,0,0-.548,0l-3.988,1.14,2.043-2.553a1,1,0,0,0-.639-1.615l-5.021-.717Z"></path>
-              </g>
-            </svg>
+  const [user, setUser] = useState(null);
+  const location = useLocation();
+  const current = location.pathname.split("/").pop();
+  const isActive = (tab) =>
+    current === tab || (tab === "home" && current === "dashboard");
+
+  useEffect(() => {
+    const user = async () => {
+      try {
+        const res = await fetch("http://localhost:4000/v1/api/user/me", {
+          method: "GET",
+          credentials: "include",
+          headers: { "Content-Type": "application/json" },
+        });
+        const data = await res.json();
+        setUser(data.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    user();
+  }, []);
+
+  return user ? (
+    <UserContext.Provider value={user}>
+      <main className="flex  flex-col min-h-screen">
+        <header className="flex sticky top-0 flex-row h-20 w-full items-center justify-between px-6 backdrop-blur-3xl  z-100 max-[500px]:px-3">
+          <div className="flex flex-row items-center justify-center gap-16 max-[500px]:gap-3">
+            <div className="min-h-8 min-w-8 max-[500px]:min-h-6 max-[500px]:min-w-6">
+              <svg
+                fill="#000000"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  <path d="M1.858,12.99l5.267.752L4.219,17.375a1,1,0,0,0,1.055,1.587L11,17.326V21a1,1,0,0,0,2,0V17.326l5.726,1.636A1.023,1.023,0,0,0,19,19a1,1,0,0,0,.781-1.625l-2.906-3.633,5.267-.752a1,1,0,0,0,.565-1.7L21,9.586V6a1,1,0,0,0-1.555-.832L15.87,7.551l1.078-3.235A1,1,0,0,0,16,3H14.414L12.707,1.293a1,1,0,0,0-1.414,0L9.586,3H8a1,1,0,0,0-.948,1.316L8.13,7.551,4.555,5.168A1,1,0,0,0,3,6V9.586L1.293,11.293a1,1,0,0,0,.565,1.7Zm2.849-2.283A1,1,0,0,0,5,10V7.868l4.445,2.964a1,1,0,0,0,1.5-1.148L9.388,5H10a1,1,0,0,0,.707-.293L12,3.414l1.293,1.293A1,1,0,0,0,14,5h.612l-1.56,4.684a1,1,0,0,0,1.5,1.148L19,7.868V10a1,1,0,0,0,.293.707l.586.586-5.021.717a1,1,0,0,0-.639,1.615l2.043,2.553-3.988-1.14a1.007,1.007,0,0,0-.548,0l-3.988,1.14,2.043-2.553a1,1,0,0,0-.639-1.615l-5.021-.717Z"></path>
+                </g>
+              </svg>
+            </div>
+            <div className="flex flex-col">
+              <h3 className="text-[26px] font-semibold max-[650px]:text-[24px] max-[500px]:text-[20px]">
+                Hi, {user.name}!
+              </h3>
+              <p className="text-sm text-gray-800 font-[450] max-[650px]:text-[8px]">
+                Let's take a look at your activity today
+              </p>
+            </div>
           </div>
-          <div className="flex flex-col">
-            <h3 className="text-[26px] font-semibold max-[650px]:text-[24px] max-[500px]:text-[20px]">
-              Hi, Aditya!
-            </h3>
-            <p className="text-sm text-gray-800 font-[450] max-[650px]:text-[8px]">
-              Let's take a look at your activity today
-            </p>
-          </div>
-        </div>
-        <div className="flex flex-row items-center">
-          <Input
-            placeholder={"Search for user"}
-            style={"max-[400px]:max-w-22"}
-          />
-          <Button
-            child={
-              <div className="flex gap-2">
-                <div>Upgrade</div>
+          <div className="flex flex-row items-center">
+            <Input
+              placeholder={"Search for user"}
+              style={"max-[400px]:max-w-22"}
+            />
+            <Button
+              child={
+                <div className="flex gap-2">
+                  <div>Upgrade</div>
+                  <svg
+                    className="h-6 w-6 max-[650px]:h-6 max-[650px]:w-6"
+                    height="32px"
+                    width="32px"
+                    version="1.1"
+                    id="Layer_1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    viewBox="0 0 512 512"
+                    xml:space="preserve"
+                    fill="#FFC61B"
+                  >
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g
+                      id="SVGRepo_tracerCarrier"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></g>
+                    <g id="SVGRepo_iconCarrier">
+                      {" "}
+                      <path d="M97.872,304.24c-3.926,0-7.854-1.497-10.849-4.494l-33.205-33.205 c-6.731-6.732-10.438-15.682-10.438-25.201c0-9.519,3.707-18.47,10.438-25.201l85.873-85.873c0.008-0.006,0.015-0.014,0.021-0.021 l12.414-12.414c5.991-5.991,15.707-5.991,21.7,0c2.995,2.996,4.494,6.923,4.494,10.849c0,3.926-1.499,7.854-4.494,10.849 l-98.308,98.31c-1.932,1.932-1.932,5.074,0,7.004l33.205,33.205c5.991,5.991,5.991,15.707,0,21.7 C105.726,302.742,101.798,304.24,97.872,304.24z"></path>{" "}
+                      <path
+                        d="M295.728,77.44l-86.132,1.177l-47.032-47.032c-5.715-5.715-1.689-15.489,6.393-15.519l188.868-0.723 l-0.724,188.868c-0.031,8.083-9.804,12.109-15.519,6.393l-47.032-47.032L295.728,77.44z"
+                        fill="#FEE187"
+                      ></path>{" "}
+                      <g>
+                        {" "}
+                        <path d="M368.676,4.494C365.784,1.602,361.844,0,357.769,0l-188.87,0.724 c-9.896,0.038-18.728,5.976-22.497,15.127s-1.685,19.587,5.315,26.586l47.032,47.031c2.929,2.927,6.918,4.535,11.059,4.492 l70.364-0.962l-0.828,60.643l-77.97,77.97c-5.991,5.991-5.991,15.707,0,21.7c2.996,2.996,6.923,4.494,10.849,4.494 s7.854-1.497,10.849-4.494l69.76-69.76l37.903,37.905c4.627,4.626,10.74,7.173,17.212,7.173c13.457,0,24.447-10.927,24.5-24.357 l0.726-188.868C373.184,11.312,371.569,7.385,368.676,4.494z M341.817,189.14l-31.837-31.837l1.089-79.654 c0.057-4.141-1.565-8.13-4.492-11.059c-2.929-2.929-6.84-4.528-11.059-4.492l-79.654,1.089L184.027,31.35l158.396-0.608 L341.817,189.14z"></path>{" "}
+                        <path d="M349.041,398.662c-3.928,0-7.853-1.497-10.849-4.494c-5.991-5.991-5.991-15.707,0-21.698 l98.307-98.308c1.932-1.932,1.932-5.074,0-7.004l-33.205-33.205c-5.991-5.991-5.991-15.707,0-21.7c5.993-5.991,15.705-5.991,21.7,0 l33.205,33.205c13.896,13.896,13.896,36.505,0,50.403l-85.854,85.854c-0.014,0.012-0.026,0.026-0.038,0.04l-12.414,12.414 C356.893,397.164,352.968,398.662,349.041,398.662z"></path>{" "}
+                      </g>{" "}
+                      <path
+                        d="M216.287,434.56l86.132-1.177l47.032,47.032c5.715,5.715,1.689,15.489-6.393,15.519L154.19,496.66 l0.726-188.868c0.031-8.083,9.804-12.109,15.519-6.393l47.032,47.032L216.287,434.56z"
+                        fill="#FEE187"
+                      ></path>{" "}
+                      <path d="M360.299,469.563l-47.031-47.031c-2.88-2.878-6.783-4.494-10.849-4.494c-0.069,0-0.14,0-0.21,0.002 l-70.364,0.962l0.829-60.645l77.97-77.968c5.991-5.991,5.991-15.707,0-21.698c-5.991-5.991-15.703-5.991-21.7,0l-69.758,69.758 l-37.903-37.903c-4.627-4.626-10.74-7.174-17.212-7.174c-13.457,0-24.447,10.927-24.5,24.357l-0.724,188.868 c-0.015,4.09,1.602,8.017,4.494,10.909c2.878,2.877,6.78,4.494,10.849,4.494c0.02,0,0.04,0,0.06,0l188.868-0.724 c9.898-0.038,18.729-5.978,22.499-15.128C369.384,486.996,367.299,476.561,360.299,469.563z M169.591,481.256l0.608-158.394 l31.837,31.837l-1.089,79.654c-0.057,4.141,1.563,8.13,4.492,11.059c2.929,2.929,6.9,4.525,11.059,4.492l79.654-1.089l31.835,31.837 L169.591,481.256z"></path>{" "}
+                    </g>
+                  </svg>
+                </div>
+              }
+              style="max-[750px]:hidden px-8 py-3"
+            />
+            <Button
+              child={
                 <svg
-                  className="h-6 w-6 max-[650px]:h-6 max-[650px]:w-6"
+                  className="h-6 w-6 max-[650px]:h-6 max-[650px]:w-6 max-[400px]:h-5 max-[400px]:w-5"
                   height="32px"
                   width="32px"
                   version="1.1"
@@ -86,77 +152,29 @@ export default function Dashboard() {
                     <path d="M360.299,469.563l-47.031-47.031c-2.88-2.878-6.783-4.494-10.849-4.494c-0.069,0-0.14,0-0.21,0.002 l-70.364,0.962l0.829-60.645l77.97-77.968c5.991-5.991,5.991-15.707,0-21.698c-5.991-5.991-15.703-5.991-21.7,0l-69.758,69.758 l-37.903-37.903c-4.627-4.626-10.74-7.174-17.212-7.174c-13.457,0-24.447,10.927-24.5,24.357l-0.724,188.868 c-0.015,4.09,1.602,8.017,4.494,10.909c2.878,2.877,6.78,4.494,10.849,4.494c0.02,0,0.04,0,0.06,0l188.868-0.724 c9.898-0.038,18.729-5.978,22.499-15.128C369.384,486.996,367.299,476.561,360.299,469.563z M169.591,481.256l0.608-158.394 l31.837,31.837l-1.089,79.654c-0.057,4.141,1.563,8.13,4.492,11.059c2.929,2.929,6.9,4.525,11.059,4.492l79.654-1.089l31.835,31.837 L169.591,481.256z"></path>{" "}
                   </g>
                 </svg>
-              </div>
-            }
-            style="max-[750px]:hidden px-8 py-3"
-          />
-          <Button
-            child={
-              <svg
-                className="h-6 w-6 max-[650px]:h-6 max-[650px]:w-6 max-[400px]:h-5 max-[400px]:w-5"
-                height="32px"
-                width="32px"
-                version="1.1"
-                id="Layer_1"
-                xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                viewBox="0 0 512 512"
-                xml:space="preserve"
-                fill="#FFC61B"
-              >
-                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                <g
-                  id="SVGRepo_tracerCarrier"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></g>
-                <g id="SVGRepo_iconCarrier">
-                  {" "}
-                  <path d="M97.872,304.24c-3.926,0-7.854-1.497-10.849-4.494l-33.205-33.205 c-6.731-6.732-10.438-15.682-10.438-25.201c0-9.519,3.707-18.47,10.438-25.201l85.873-85.873c0.008-0.006,0.015-0.014,0.021-0.021 l12.414-12.414c5.991-5.991,15.707-5.991,21.7,0c2.995,2.996,4.494,6.923,4.494,10.849c0,3.926-1.499,7.854-4.494,10.849 l-98.308,98.31c-1.932,1.932-1.932,5.074,0,7.004l33.205,33.205c5.991,5.991,5.991,15.707,0,21.7 C105.726,302.742,101.798,304.24,97.872,304.24z"></path>{" "}
-                  <path
-                    d="M295.728,77.44l-86.132,1.177l-47.032-47.032c-5.715-5.715-1.689-15.489,6.393-15.519l188.868-0.723 l-0.724,188.868c-0.031,8.083-9.804,12.109-15.519,6.393l-47.032-47.032L295.728,77.44z"
-                    fill="#FEE187"
-                  ></path>{" "}
-                  <g>
-                    {" "}
-                    <path d="M368.676,4.494C365.784,1.602,361.844,0,357.769,0l-188.87,0.724 c-9.896,0.038-18.728,5.976-22.497,15.127s-1.685,19.587,5.315,26.586l47.032,47.031c2.929,2.927,6.918,4.535,11.059,4.492 l70.364-0.962l-0.828,60.643l-77.97,77.97c-5.991,5.991-5.991,15.707,0,21.7c2.996,2.996,6.923,4.494,10.849,4.494 s7.854-1.497,10.849-4.494l69.76-69.76l37.903,37.905c4.627,4.626,10.74,7.173,17.212,7.173c13.457,0,24.447-10.927,24.5-24.357 l0.726-188.868C373.184,11.312,371.569,7.385,368.676,4.494z M341.817,189.14l-31.837-31.837l1.089-79.654 c0.057-4.141-1.565-8.13-4.492-11.059c-2.929-2.929-6.84-4.528-11.059-4.492l-79.654,1.089L184.027,31.35l158.396-0.608 L341.817,189.14z"></path>{" "}
-                    <path d="M349.041,398.662c-3.928,0-7.853-1.497-10.849-4.494c-5.991-5.991-5.991-15.707,0-21.698 l98.307-98.308c1.932-1.932,1.932-5.074,0-7.004l-33.205-33.205c-5.991-5.991-5.991-15.707,0-21.7c5.993-5.991,15.705-5.991,21.7,0 l33.205,33.205c13.896,13.896,13.896,36.505,0,50.403l-85.854,85.854c-0.014,0.012-0.026,0.026-0.038,0.04l-12.414,12.414 C356.893,397.164,352.968,398.662,349.041,398.662z"></path>{" "}
-                  </g>{" "}
-                  <path
-                    d="M216.287,434.56l86.132-1.177l47.032,47.032c5.715,5.715,1.689,15.489-6.393,15.519L154.19,496.66 l0.726-188.868c0.031-8.083,9.804-12.109,15.519-6.393l47.032,47.032L216.287,434.56z"
-                    fill="#FEE187"
-                  ></path>{" "}
-                  <path d="M360.299,469.563l-47.031-47.031c-2.88-2.878-6.783-4.494-10.849-4.494c-0.069,0-0.14,0-0.21,0.002 l-70.364,0.962l0.829-60.645l77.97-77.968c5.991-5.991,5.991-15.707,0-21.698c-5.991-5.991-15.703-5.991-21.7,0l-69.758,69.758 l-37.903-37.903c-4.627-4.626-10.74-7.174-17.212-7.174c-13.457,0-24.447,10.927-24.5,24.357l-0.724,188.868 c-0.015,4.09,1.602,8.017,4.494,10.909c2.878,2.877,6.78,4.494,10.849,4.494c0.02,0,0.04,0,0.06,0l188.868-0.724 c9.898-0.038,18.729-5.978,22.499-15.128C369.384,486.996,367.299,476.561,360.299,469.563z M169.591,481.256l0.608-158.394 l31.837,31.837l-1.089,79.654c-0.057,4.141,1.563,8.13,4.492,11.059c2.929,2.929,6.9,4.525,11.059,4.492l79.654-1.089l31.835,31.837 L169.591,481.256z"></path>{" "}
-                </g>
-              </svg>
-            }
-            style="p-2 min-[750px]:hidden max-[400px]:p-1"
-          />
-        </div>
-      </header>
-      <div className="flex flex-row relative h-full">
-        <nav className="flex sticky max-h-[calc(100vh-80px)] top-20 flex-col items-center justify-between py-6 w-20 max-[500px]:w-14 max-[500px]:items-end [@media(height<510px)]:overflow-scroll gap-4">
-          <div className="flex flex-col items-center gap-4">
-            <MainIconsContainer
-              Icons={userAdminIconSVGS}
-              isIconChange={true}
-              activeButton={activeButton}
-              setActiveButton={setActiveButton}
+              }
+              style="p-2 min-[750px]:hidden max-[400px]:p-1"
             />
-            <SideIconsContainer Icons={settingIconSVGS} />
           </div>
-          <SideIconsContainer Icons={logoutSVGS} />
-        </nav>
-        <div className="flex w-full justify-center">
-          {activeButton == 1 ? (
-            <DashboardHome />
-          ) : activeButton == 2 ? (
-            <DashboardInfo />
-          ) : (
-            <AdminPage />
-          )}
+        </header>
+        <div className="flex flex-row relative h-full">
+          <nav className="flex sticky max-h-[calc(100vh-80px)] top-20 flex-col items-center justify-between py-6 w-20 max-[500px]:w-14 max-[500px]:items-end [@media(height<510px)]:overflow-scroll gap-4">
+            <div className="flex flex-col items-center gap-4">
+              <MainIconsContainer
+                Icons={userAdminIconSVGS}
+                isActive={isActive}
+              />
+              <SideIconsContainer Icons={settingIconSVGS} />
+            </div>
+            <SideIconsContainer Icons={logoutSVGS} />
+          </nav>
+          <div className="flex w-full justify-center">
+            <Outlet />
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </UserContext.Provider>
+  ) : (
+    ""
   );
 }

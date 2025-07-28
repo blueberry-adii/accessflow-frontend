@@ -6,8 +6,10 @@ import { Link, useNavigate } from "react-router-dom";
 export default function Login() {
   const [state, setState] = useState("LogIn");
   const [formData, setFormData] = useState({
+    name: "",
     username: "",
     password: "",
+    confirmPassword: "",
   });
   const [error, setError] = useState("");
   const navigate = useNavigate();
@@ -34,7 +36,12 @@ export default function Login() {
       const data = await res.json();
       console.log(data.message);
       if (data.success) {
-        setFormData({});
+        setFormData({
+          name: "",
+          username: "",
+          password: "",
+          confirmPassword: "",
+        });
         navigate("/dashboard");
       } else {
         setError(data.message);
@@ -56,21 +63,13 @@ export default function Login() {
           <Button
             onClick={() => {
               setError("");
-              if (state == "SignUp") {
-                setFormData({
-                  username: "",
-                  password: "",
-                });
-                setState("LogIn");
-              } else {
-                setFormData({
-                  name: "",
-                  username: "",
-                  password: "",
-                  confirmPassword: "",
-                });
-                setState("SignUp");
-              }
+              setFormData({
+                name: "",
+                username: "",
+                password: "",
+                confirmPassword: "",
+              });
+              setState(state == "SignUp" ? "LogIn" : "SignUp");
             }}
             child={`${state != "SignUp" ? "New here?" : "Already Registered?"}`}
             style={`px-10 py-3 rounded-xl border-1 border-black/10 bg-white text-black hover:text-white max-[850px]:px-4 max-[850px]:py-1.5`}
