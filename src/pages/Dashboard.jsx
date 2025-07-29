@@ -175,6 +175,6 @@ export default function Dashboard() {
       </main>
     </UserContext.Provider>
   ) : (
-    ""
+    "Just a few moment..."
   );
 }
