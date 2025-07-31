@@ -6,8 +6,8 @@ This is the frontend client for the **Access Flow** application, built using **R
 
 ## 🧠 Author - Aditya Prasad
 
-- [LinkedIn]("https://www.linkedin.com/in/aditya-prasad-095ab9329/")
-- [GitHub]("https://github.com/blueberry-adii)
+- [LinkedIn]("https://www.linkedin.com/in/aditya-prasad-095ab9329")
+- [GitHub]("https://github.com/blueberry-adii")
 - [Live Project Link]("")
 
 ---
