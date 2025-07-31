@@ -1,4 +1,3 @@
-import { useState } from "react";
 import SideIcon from "./SideIcon";
 
 export default function SideIconsContainer({ Icons }) {

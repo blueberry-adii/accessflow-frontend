@@ -1,3 +1,5 @@
+import { logoutHandler } from "./utils/logoutHandler";
+
 const userAdminIconSVGS = [
   {
     route: "home",
@@ -344,9 +346,7 @@ const settingIconSVGS = [
 
 const logoutSVGS = [
   {
-    onClick: () => {
-      console.log("LogOut");
-    },
+    onClick: logoutHandler,
     icon: 6,
     svg: (
       <svg
@@ -399,7 +399,7 @@ const logoutSVGS = [
     onClick: () => {},
     icon: 7,
     svg: (
-      <div className="h-10 w-10 max-[650px]:h-8 max-[650px]:w-8 rounded-full bg-black/25"></div>
+      <div className="h-10 w-10 max-[650px]:h-8 max-[650px]:w-8 rounded-full bg-black/15"></div>
     ),
   },
 ];

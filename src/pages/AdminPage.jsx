@@ -24,7 +24,6 @@ export default function AdminPage() {
         }
       );
       const data = await res.json();
-      console.log(data);
       if (!res.ok) throw new Error("Promote failed");
 
       setAllUsers((prevUsers) =>
@@ -51,7 +50,6 @@ export default function AdminPage() {
         }
       );
       const data = await res.json();
-      console.log(data);
       if (!res.ok) throw new Error("Demote failed");
 
       setAllUsers((prevUsers) =>
@@ -77,8 +75,6 @@ export default function AdminPage() {
           headers: { "Content-Type": "application/json" },
         }
       );
-      const data = await res.json();
-      console.log(data);
       if (!res.ok) throw new Error("Kick failed");
 
       setAllUsers((prevUsers) =>
@@ -132,7 +128,7 @@ export default function AdminPage() {
                 {currentUser.role === "owner" ? (
                   <div className="bg-purple-200 border-[1px] border-black/10 flex flex-col gap-4 items-center rounded-xl p-4 row-span-1 max-[450px]:p-2 max-[450px]:gap-2">
                     <div className="flex gap-4 w-full items-center">
-                      <div className="min-h-8 min-w-8 bg-black/25 rounded-full max-[450px]:min-h-6 max-[450px]:min-w-6"></div>
+                      <div className="min-h-8 min-w-8 bg-black/15 rounded-full max-[450px]:min-h-6 max-[450px]:min-w-6"></div>
                       <span className="flex justify-between items-end w-full text-[16px] max-[450px]:text-[14px] max-[450px]:flex-col max-[450px]:items-start">
                         {currentUser.name} (You)
                         <span className="text-[10px] text-black/50">
@@ -150,7 +146,7 @@ export default function AdminPage() {
                   <>
                     <div className="bg-red-200 border-[1px] border-black/10 flex flex-col gap-4 items-center rounded-xl p-4 row-span-1 max-[450px]:p-2 max-[450px]:gap-2">
                       <div className="flex gap-4 w-full items-center">
-                        <div className="min-h-8 min-w-8 bg-black/25 rounded-full max-[450px]:min-h-6 max-[450px]:min-w-6"></div>
+                        <div className="min-h-8 min-w-8 bg-black/15 rounded-full max-[450px]:min-h-6 max-[450px]:min-w-6"></div>
                         <span className="flex justify-between items-end w-full text-[16px] max-[450px]:text-[14px] max-[450px]:flex-col max-[450px]:items-start">
                           Aditya
                           <span className="text-[10px] text-black/50">
@@ -166,7 +162,7 @@ export default function AdminPage() {
                     </div>
                     <div className="bg-green-200 sticky top-0 right-0 left-0 border-[1px] border-black/10 flex flex-col gap-4 items-center rounded-xl p-4 row-span-1 max-[450px]:p-2 max-[450px]:gap-2">
                       <div className="flex gap-4 w-full items-center">
-                        <div className="min-h-8 min-w-8 bg-black/25 rounded-full max-[450px]:min-h-6 max-[450px]:min-w-6"></div>
+                        <div className="min-h-8 min-w-8 bg-black/15 rounded-full max-[450px]:min-h-6 max-[450px]:min-w-6"></div>
                         <span className="flex justify-between items-end w-full text-[16px] max-[450px]:text-[14px] max-[450px]:flex-col max-[450px]:items-start">
                           {currentUser.name} (You)
                           <span className="text-[10px] text-black/50">
@@ -188,7 +184,7 @@ export default function AdminPage() {
                     return (
                       <div className="bg-white/25 border-[1px] border-black/10 flex flex-col gap-8 items-center rounded-xl p-4 row-span-1 max-[450px]:p-2 max-[450px]:gap-2">
                         <div className="flex gap-4 w-full items-center">
-                          <div className="min-h-8 min-w-8 bg-black/25 rounded-full max-[450px]:min-h-6 max-[450px]:min-w-6"></div>
+                          <div className="min-h-8 min-w-8 bg-black/15 rounded-full max-[450px]:min-h-6 max-[450px]:min-w-6"></div>
                           <span className="flex justify-between items-end w-full text-[16px] max-[450px]:text-[14px] max-[450px]:flex-col max-[450px]:items-start">
                             {name}
                             <span className="text-[10px] text-black/50">
@@ -235,7 +231,7 @@ export default function AdminPage() {
             </>
           ) : (
             <div className="h-full w-full text-2xl pt-12 font-semibold text-center">
-              You are not allowed to access User Data
+              You are not allowed to access Admin Panel
             </div>
           )
         ) : (
