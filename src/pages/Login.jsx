@@ -24,8 +24,8 @@ export default function Login() {
     try {
       const url =
         state == "LogIn"
-          ? "http://localhost:4000/v1/api/auth/login"
-          : "http://localhost:4000/v1/api/auth/signup";
+          ? "https://accessflow-backend.onrender.com/v1/api/auth/login"
+          : "https://accessflow-backend.onrender.com/v1/api/auth/signup";
       const res = await fetch(url, {
         method: "POST",
         credentials: "include",

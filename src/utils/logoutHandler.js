@@ -1,10 +1,13 @@
 export const logoutHandler = async () => {
   try {
-    const res = await fetch("http://localhost:4000/v1/api/auth/logout", {
-      method: "POST",
-      credentials: "include",
-      headers: { "Content-Type": "application/json" },
-    });
+    const res = await fetch(
+      "https://accessflow-backend.onrender.com/v1/api/auth/logout",
+      {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+      }
+    );
 
     if (res.ok) {
       window.location.href = window.location.href;

@@ -10,7 +10,7 @@ export default function ProtectedRoute({ children }) {
     const checkAuth = async () => {
       try {
         const res = await fetch(
-          "http://localhost:4000/v1/api/auth/check-auth",
+          "https://accessflow-backend.onrender.com/v1/api/auth/check-auth",
           {
             method: "GET",
             credentials: "include",
@@ -21,7 +21,7 @@ export default function ProtectedRoute({ children }) {
           setIsAuth(true);
         } else {
           const refreshRes = await fetch(
-            "http://localhost:4000/v1/api/auth/refresh-token",
+            "https://accessflow-backend.onrender.com/v1/api/auth/refresh-token",
             {
               method: "GET",
               credentials: "include",

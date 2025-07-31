@@ -14,7 +14,7 @@ export default function AdminPage() {
     try {
       setIsLoading(true);
       const res = await fetch(
-        `http://localhost:4000/v1/api/user/admin/make-admin/${encodeURIComponent(
+        `https://accessflow-backend.onrender.com/v1/api/user/admin/make-admin/${encodeURIComponent(
           username
         )}`,
         {
@@ -40,7 +40,7 @@ export default function AdminPage() {
     try {
       setIsLoading(true);
       const res = await fetch(
-        `http://localhost:4000/v1/api/user/admin/remove-admin/${encodeURIComponent(
+        `https://accessflow-backend.onrender.com/v1/api/user/admin/remove-admin/${encodeURIComponent(
           username
         )}`,
         {
@@ -66,7 +66,7 @@ export default function AdminPage() {
     try {
       setIsLoading(true);
       const res = await fetch(
-        `http://localhost:4000/v1/api/user/admin/kick/${encodeURIComponent(
+        `https://accessflow-backend.onrender.com/v1/api/user/admin/kick/${encodeURIComponent(
           username
         )}`,
         {
@@ -91,7 +91,7 @@ export default function AdminPage() {
     const allUsers = async () => {
       try {
         const res = await fetch(
-          "http://localhost:4000/v1/api/user/admin/all-users",
+          "https://accessflow-backend.onrender.com/v1/api/user/admin/all-users",
           {
             method: "GET",
             credentials: "include",

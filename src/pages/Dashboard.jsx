@@ -18,11 +18,14 @@ export default function Dashboard() {
   useEffect(() => {
     const user = async () => {
       try {
-        const res = await fetch("http://localhost:4000/v1/api/user/me", {
-          method: "GET",
-          credentials: "include",
-          headers: { "Content-Type": "application/json" },
-        });
+        const res = await fetch(
+          "https://accessflow-backend.onrender.com/v1/api/user/me",
+          {
+            method: "GET",
+            credentials: "include",
+            headers: { "Content-Type": "application/json" },
+          }
+        );
         const data = await res.json();
         setUser(data.data);
       } catch (err) {
