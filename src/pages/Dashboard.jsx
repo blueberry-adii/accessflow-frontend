@@ -6,6 +6,7 @@ import { logoutSVGS, settingIconSVGS, userAdminIconSVGS } from "../constants";
 import SideIconsContainer from "../components/SideIconsContainer";
 import { useEffect, useState } from "react";
 import { UserContext } from "../UserContext";
+import Loading from "../utils/Loading";
 
 export default function Dashboard() {
   const [user, setUser] = useState(null);
@@ -175,6 +176,6 @@ export default function Dashboard() {
       </main>
     </UserContext.Provider>
   ) : (
-    "Just a few moment..."
+    <Loading text={"Just a few moment..."} />
   );
 }

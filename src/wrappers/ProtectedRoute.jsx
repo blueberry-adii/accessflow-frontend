@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
+import Loading from "../utils/Loading";
 
 export default function ProtectedRoute({ children }) {
   const [isAuth, setIsAuth] = useState(null);
@@ -42,7 +43,7 @@ export default function ProtectedRoute({ children }) {
     checkAuth();
   }, []);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <Loading text={"Loading..."} />;
 
   if (!isAuth) return <Navigate to="/login" replace />;
 
