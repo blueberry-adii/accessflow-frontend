@@ -24,8 +24,8 @@ export default function Login() {
     try {
       const url =
         state == "LogIn"
-          ? "https://accessflow-backend.onrender.com/v1/api/auth/login"
-          : "https://accessflow-backend.onrender.com/v1/api/auth/signup";
+          ? `${import.meta.env.VITE_API_URL}/v1/api/auth/login`
+          : `${import.meta.env.VITE_API_URL}/v1/api/auth/signup`;
       const res = await fetch(url, {
         method: "POST",
         credentials: "include",
@@ -51,7 +51,7 @@ export default function Login() {
   }
   return (
     <main className="min-h-screen flex items-center justify-center py-4">
-      <div className="bg-[#ffede1] relative w-[75%] max-w-[1200px] h-[600px] max-h-[700px] shadow-xl shadow-black/20 flex justify-between rounded-4xl max-[580px]:flex-col">
+      <div className="bg-[#ffede1] relative w-[75%] max-w-[1200px] h-[500px] max-h-[700px] shadow-xl shadow-black/20 flex justify-between rounded-4xl max-[580px]:flex-col max-[580px]:w-[85%] max-[580px]:h-[650px]">
         <div
           className={`bg-gradient-to-tl from-[#3f2500] to-[#f7c99f] absolute flex justify-center items-center w-1/2 h-full transition-transform ease-in-out duration-250 max-[580px]:w-full max-[580px]:h-1/2 ${
             state != "SignUp"
@@ -75,7 +75,7 @@ export default function Login() {
           ></Button>
         </div>
         <div
-          className={`w-1/2 h-full flex flex-col gap-24 items-center justify-center transition-transform ease-in-out duration-250 max-[580px]:w-full max-[580px]:h-1/2 max-[580px]:gap-4 ${
+          className={`w-1/2 h-full flex flex-col gap-16 items-center justify-center transition-transform ease-in-out duration-250 max-[580px]:w-full max-[580px]:h-1/2 max-[580px]:gap-4 ${
             state != "LogIn"
               ? "min-[580px]:rounded-r-4xl max-[580px]:rounded-b-4xl min-[580px]:translate-x-full max-[580px]:translate-y-full"
               : "min-[580px]:rounded-l-4xl max-[580px]:rounded-t-4xl"

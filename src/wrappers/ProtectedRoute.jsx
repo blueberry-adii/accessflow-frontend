@@ -10,7 +10,7 @@ export default function ProtectedRoute({ children }) {
     const checkAuth = async () => {
       try {
         const res = await fetch(
-          "https://accessflow-backend.onrender.com/v1/api/auth/check-auth",
+          `${import.meta.env.VITE_API_URL}/v1/api/auth/check-auth`,
           {
             method: "GET",
             credentials: "include",
@@ -21,7 +21,7 @@ export default function ProtectedRoute({ children }) {
           setIsAuth(true);
         } else {
           const refreshRes = await fetch(
-            "https://accessflow-backend.onrender.com/v1/api/auth/refresh-token",
+            `${import.meta.env.VITE_API_URL}/v1/api/auth/refresh-token`,
             {
               method: "GET",
               credentials: "include",
@@ -43,7 +43,12 @@ export default function ProtectedRoute({ children }) {
     checkAuth();
   }, []);
 
-  if (loading) return <Loading text={"Loading..."} />;
+  if (loading)
+    return (
+      <div className="h-screen">
+        <Loading text={"Loading..."} />
+      </div>
+    );
 
   if (!isAuth) return <Navigate to="/login" replace />;
 

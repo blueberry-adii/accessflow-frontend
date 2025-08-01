@@ -47,7 +47,7 @@ export default function Home() {
           <Button
             onClick={() => navigate("/dashboard")}
             child="Join Now"
-            style="px-10 py-3 max-[500px]:px-5 max-[500px]:py-1.5 max-[500px]:text-[14px]"
+            style="px-10 py-3 max-[500px]:px-6 max-[500px]:py-2 max-[500px]:text-[12px]"
           />
         </div>
       </header>
@@ -263,7 +263,7 @@ export default function Home() {
         </div>
       </section>
       <section className="max-w-screen-2xl mx-auto bg-gray-800 text-white flex flex-col px-16 py-4 max-[500px]:px-4">
-        <div className="text-lg pt-4 max-[500px]:text-[16px]">
+        <div className="text-lg pt-4 max-[500px]:text-[12px]">
           © 2025 Made by Aditya Prasad
         </div>
         <div className="text-white/50 pb-4 max-[500px]:text-[12px] max-[500px]:pb-1">

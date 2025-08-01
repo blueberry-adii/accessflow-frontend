@@ -19,7 +19,7 @@ export default function Dashboard() {
     const user = async () => {
       try {
         const res = await fetch(
-          "https://accessflow-backend.onrender.com/v1/api/user/me",
+          `${import.meta.env.VITE_API_URL}/v1/api/user/me`,
           {
             method: "GET",
             credentials: "include",
@@ -59,10 +59,10 @@ export default function Dashboard() {
               </svg>
             </div>
             <div className="flex flex-col">
-              <h3 className="text-[26px] font-semibold max-[650px]:text-[24px] max-[500px]:text-[20px]">
+              <h3 className="text-[26px] font-bold max-[650px]:text-[24px] max-[500px]:text-[20px]">
                 Hi, {user.name}!
               </h3>
-              <p className="text-sm text-gray-800 font-[450] max-[650px]:text-[8px]">
+              <p className="text-sm text-gray-800 font-[500] max-[650px]:text-[10px]">
                 Let's take a look at your activity today
               </p>
             </div>
@@ -70,7 +70,7 @@ export default function Dashboard() {
           <div className="flex flex-row items-center">
             <Input
               placeholder={"Search for user"}
-              style={"max-[400px]:max-w-22"}
+              style={"max-[400px]:max-w-26"}
             />
             <Button
               child={
@@ -120,7 +120,7 @@ export default function Dashboard() {
             <Button
               child={
                 <svg
-                  className="h-6 w-6 max-[650px]:h-6 max-[650px]:w-6 max-[400px]:h-5 max-[400px]:w-5"
+                  className="h-6 w-6 max-[400px]:h-5 max-[400px]:w-5"
                   height="32px"
                   width="32px"
                   version="1.1"
@@ -157,12 +157,12 @@ export default function Dashboard() {
                   </g>
                 </svg>
               }
-              style="p-2 min-[750px]:hidden max-[400px]:p-1"
+              style="p-2 min-[750px]:hidden max-[400px]:p-1.5"
             />
           </div>
         </header>
         <div className="flex flex-row relative h-full">
-          <nav className="flex sticky max-h-[calc(100vh-80px)] top-20 flex-col items-center justify-between py-6 w-20 max-[500px]:w-14 max-[500px]:items-end [@media(height<510px)]:overflow-scroll gap-4">
+          <nav className="flex sticky h-[calc(100vh-80px)] top-20 flex-col items-center justify-between py-6 w-20 max-[500px]:w-14 max-[500px]:items-end [@media(height<510px)]:overflow-scroll gap-4">
             <div className="flex flex-col items-center gap-4">
               <MainIconsContainer
                 Icons={userAdminIconSVGS}
@@ -179,6 +179,9 @@ export default function Dashboard() {
       </main>
     </UserContext.Provider>
   ) : (
-    <Loading text={"Just a few moment..."} />
+    <div className="h-screen">
+      {" "}
+      <Loading text={"Just a few moment..."} />
+    </div>
   );
 }

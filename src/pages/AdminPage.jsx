@@ -14,9 +14,9 @@ export default function AdminPage() {
     try {
       setIsLoading(true);
       const res = await fetch(
-        `https://accessflow-backend.onrender.com/v1/api/user/admin/make-admin/${encodeURIComponent(
-          username
-        )}`,
+        `${
+          import.meta.env.VITE_API_URL
+        }/v1/api/user/admin/make-admin/${encodeURIComponent(username)}`,
         {
           method: "PUT",
           credentials: "include",
@@ -40,9 +40,9 @@ export default function AdminPage() {
     try {
       setIsLoading(true);
       const res = await fetch(
-        `https://accessflow-backend.onrender.com/v1/api/user/admin/remove-admin/${encodeURIComponent(
-          username
-        )}`,
+        `${
+          import.meta.env.VITE_API_URL
+        }/v1/api/user/admin/remove-admin/${encodeURIComponent(username)}`,
         {
           method: "PUT",
           credentials: "include",
@@ -66,9 +66,9 @@ export default function AdminPage() {
     try {
       setIsLoading(true);
       const res = await fetch(
-        `https://accessflow-backend.onrender.com/v1/api/user/admin/kick/${encodeURIComponent(
-          username
-        )}`,
+        `${
+          import.meta.env.VITE_API_URL
+        }/v1/api/user/admin/kick/${encodeURIComponent(username)}`,
         {
           method: "DELETE",
           credentials: "include",
@@ -91,7 +91,7 @@ export default function AdminPage() {
     const allUsers = async () => {
       try {
         const res = await fetch(
-          "https://accessflow-backend.onrender.com/v1/api/user/admin/all-users",
+          `${import.meta.env.VITE_API_URL}/v1/api/user/admin/all-users`,
           {
             method: "GET",
             credentials: "include",
@@ -113,7 +113,7 @@ export default function AdminPage() {
   }, []);
 
   return (
-    <div className="flex flex-col gap-4 w-full max-w-[1280px] min-h-[700px] px-8 py-4 max-[850px]:max-h-[1400px] max-[650px]:max-h-[1700px] max-[500px]:px-2">
+    <div className="flex flex-col relative gap-4 w-full max-w-[1280px] min-h-[600px] h-max max-h-[650px] px-8 py-4 max-[850px]:max-h-[1400px] max-[650px]:max-h-[1700px] max-[500px]:px-2">
       <div className="text-[32px] relative w-max font-bold px-4 max-[500px]:text-2xl before:content-[''] before:h-1 before:w-full before:absolute before:top-0 before:bg-amber-800/25">
         Admin Panel
       </div>
@@ -121,10 +121,10 @@ export default function AdminPage() {
         {!isLoading ? (
           allUsers ? (
             <>
-              <div className="text-[24px] font-semibold max-[500px]:text-lg">
+              <div className="text-[24px] font-bold max-[500px]:text-lg">
                 Users
               </div>
-              <div className="flex flex-col px-4 gap-2 max-[500px]:px-2 max-h-[725px] overflow-y-scroll relative">
+              <div className="flex flex-col px-4 gap-2 max-[500px]:px-0 max-h-[725px] overflow-y-scroll relative">
                 {currentUser.role === "owner" ? (
                   <div className="bg-purple-200 border-[1px] border-black/10 flex flex-col gap-4 items-center rounded-xl p-4 row-span-1 max-[450px]:p-2 max-[450px]:gap-2">
                     <div className="flex gap-4 w-full items-center">
@@ -235,7 +235,9 @@ export default function AdminPage() {
             </div>
           )
         ) : (
-          <Loading text={"Loading..."} />
+          <div className="absolute top-1/2 left-1/2 -translate-1/2">
+            <Loading text={"Loading..."} />
+          </div>
         )}
       </div>
     </div>

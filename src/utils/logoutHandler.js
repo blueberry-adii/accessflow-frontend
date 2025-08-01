@@ -1,7 +1,7 @@
 export const logoutHandler = async () => {
   try {
     const res = await fetch(
-      "https://accessflow-backend.onrender.com/v1/api/auth/logout",
+      `${import.meta.env.VITE_API_URL}/v1/api/auth/logout`,
       {
         method: "POST",
         credentials: "include",
