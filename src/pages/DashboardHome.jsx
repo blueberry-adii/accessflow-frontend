@@ -51,7 +51,7 @@ export default function DashboardHome() {
         }
         child={
           <>
-            <div className="text-xl font-semibold">New Users</div>
+            <div className="text-xl font-bold">New Users</div>
             <NewUsers />
           </>
         }
