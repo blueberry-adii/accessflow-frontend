@@ -47,7 +47,7 @@ export default function DashboardHome() {
       />
       <GridCard
         customStyle={
-          "flex flex-col gap-2 p-6 bg-white col-span-3 row-span-2 max-[500px]:p-4"
+          "flex flex-col gap-2 p-6 bg-white min-h-[376px] col-span-3 row-span-2 max-[500px]:p-4"
         }
         child={
           <>
