@@ -2,6 +2,8 @@ import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
 import AccessFlow from "../assets/AccessFlow.png";
 import Login from "../assets/Login.png";
+import AdminPanel from "../assets/AdminPanel.png";
+import InfoPage from "../assets/InfoPage.png";
 import { useRef } from "react";
 
 export default function Home() {
@@ -183,7 +185,7 @@ export default function Home() {
           <div className="flex items-center gap-16 py-4 mt-8 select-none max-[950px]:flex-col max-[950px]:gap-8">
             <div>
               <img
-                src={AccessFlow}
+                src={AdminPanel}
                 alt="AccessFlow"
                 className="shadow-xl shadow-white/15 rounded-2xl"
                 draggable={false}
@@ -194,7 +196,7 @@ export default function Home() {
             </div>
             <div>
               <img
-                src={AccessFlow}
+                src={InfoPage}
                 alt="AccessFlow"
                 className="shadow-xl shadow-white/15 rounded-2xl"
                 draggable={false}
