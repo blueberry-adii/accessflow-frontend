@@ -172,7 +172,7 @@ export default function AdminPage() {
                       </div>
                       <div className="flex justify-between w-full items-center">
                         <span className="text-[14px] text-black/50 max-[450px]:text-[12px]">
-                          Role: {toTitle(currentUser.role)}
+                          Role: Admin
                         </span>
                       </div>
                     </div>
